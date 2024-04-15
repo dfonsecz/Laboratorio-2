@@ -1,6 +1,15 @@
 #!/bin/bash
 
+# Parametros
+
+# Define el primer parametro que recibe la ejecucion del archivo como el id de un proceso que se utilizara despues
 id=$1
+
+# -----
+
+# Programa
+
+# Para cada parte de la informacion solicitada, se obtiene con variaciones del comando ps
 
 # Nombre del proceso
 name=$(ps -p $id -o comm=)
