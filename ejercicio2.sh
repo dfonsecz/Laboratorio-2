@@ -4,7 +4,7 @@
 
 # Recibe el nombre de un proceso y el comando para ejecutarlo
 process_name=$1
-command_name=$2
+command=$2
 
 # Funciones
 
@@ -20,6 +20,7 @@ verificar_ejecucion() {
         echo "El archivo esta en ejecucion."
     else
         echo "El archivo no esta en ejecucion."
+        eval "$process_name &"
     fi
 }
 
@@ -29,4 +30,7 @@ verificar_ejecucion() {
 id=$(pgrep $process_name)
 
 # Llamar a funcion verificar_ejecucion
-verificar_ejecucion $id
+while true; do
+    verificar_ejecucion $id
+    sleep 5 # La recursion se ejecuta cada 5 segundos
+done
